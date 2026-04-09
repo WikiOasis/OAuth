@@ -128,7 +128,7 @@ class Response extends RestResponse implements ResponseInterface {
 	 * @return static
 	 * @throws InvalidArgumentException For invalid status code arguments.
 	 */
-	public function withStatus( $code, $reasonPhrase = '' ) {
+	public function withStatus( int $code, string $reasonPhrase = '' ): ResponseInterface {
 		$response = clone $this;
 		$response->setStatus( $code, $reasonPhrase );
 		return $response;
