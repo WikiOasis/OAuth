@@ -22,7 +22,7 @@ class Response extends RestResponse implements ResponseInterface {
 	 * @param string $version HTTP protocol version
 	 * @return static
 	 */
-	public function withProtocolVersion( $version ) {
+	public function withProtocolVersion( string $version ): \Psr\Http\Message\MessageInterface {
 		$response = clone $this;
 		$response->setProtocolVersion( $version );
 		return $response;
@@ -43,7 +43,7 @@ class Response extends RestResponse implements ResponseInterface {
 	 * @return static
 	 * @throws InvalidArgumentException for invalid header names or values.
 	 */
-	public function withHeader( $name, $value ) {
+	public function withHeader( string $name, $value ): \Psr\Http\Message\MessageInterface {
 		$response = clone $this;
 		$response->setHeader( $name, $value );
 		return $response;
@@ -65,7 +65,7 @@ class Response extends RestResponse implements ResponseInterface {
 	 * @return static
 	 * @throws InvalidArgumentException for invalid header names or values.
 	 */
-	public function withAddedHeader( $name, $value ) {
+	public function withAddedHeader( string $name, $value ): \Psr\Http\Message\MessageInterface {
 		$response = clone $this;
 		$response->addHeader( $name, $value );
 		return $response;
@@ -83,7 +83,7 @@ class Response extends RestResponse implements ResponseInterface {
 	 * @param string $name Case-insensitive header field name to remove.
 	 * @return static
 	 */
-	public function withoutHeader( $name ) {
+	public function withoutHeader( string $name ): \Psr\Http\Message\MessageInterface {
 		$response = clone $this;
 		$response->removeHeader( $name );
 		return $response;
@@ -102,7 +102,7 @@ class Response extends RestResponse implements ResponseInterface {
 	 * @return static
 	 * @throws InvalidArgumentException When the body is not valid.
 	 */
-	public function withBody( StreamInterface $body ) {
+	public function withBody( StreamInterface $body ): \Psr\Http\Message\MessageInterface {
 		$response = clone $this;
 		$response->setBody( $body );
 		return $response;
